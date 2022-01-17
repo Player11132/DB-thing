@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+	<link href = "stylesheets/index.css" type = "text/css" rel = "stylesheet">
+	<script src = "../scripts/index.js"></script>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Content</th>
+			<th>Completed</th>
+			<th>Edit</th>
+		</tr>
+
+		<% for (var i = 0; i < ui_todoitems.length; i++) { %>
+			<tr>
+				<form method="post" action="/editToDo">
+					<td>
+						<input type="text" name="id" value="<%= ui_todoitems[i].ID %>" readonly>
+					</td>
+					<td>
+						<input type="text" name="Content" value="<%= ui_todoitems[i].title %>">
+					</td>
+					<td>
+						<input type="text" name="Completed" value="<%= ui_todoitems[i].completed %>">
+					</td>
+					<td>
+						<input type="submit" value="Edit">
+					</td>
+				</form>
+				
+			</tr>
+		<% } %>
+	</table>
+
+	<div>
+		<div>
+			<div>
+				<h2>Add ToDo to DB</h2>
+			</div>
+			<div>
+				<form method="post" action="/addToDo">
+					
+					<label>
+						Content: <input type="text" name="Content" required="required">
+					</label>
+					<label>
+						Completed: <input type="number" name="Completed (0/1)" required="required">
+					</label>
+					
+					<button>Submit</button>
+			  </form>	
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
